@@ -144,6 +144,26 @@ def inject_beef_hook(target_domain):
     injectable_pages = injector.scan_for_injectable_pages(target_domain)
     results["injectable_pages"] = injectable_pages
     
+    if not injectable_pages:
+        print("No injectable pages found.")
+        return results
+    
+    print(f"\nFound {len(injectable_pages)} injectable pages:")
+    for i, page in enumerate(injectable_pages, 1):
+        print(f"  {i}. {page['url']} ({page['type']})")
+    
+    # Ask for user confirmation
+    while True:
+        user_input = input("\nDo you want to inject BeEF hook? (y/n): ").lower().strip()
+        if user_input in ['y', 'yes']:
+            print("Proceeding with BeEF hook injection...")
+            break
+        elif user_input in ['n', 'no']:
+            print("BeEF hook injection cancelled by user.")
+            return results
+        else:
+            print("Please enter 'y' for yes or 'n' for no.")
+    
     for page in injectable_pages:
         if page["injectable"]:
             injection_result = injector.inject_hook(page["url"])

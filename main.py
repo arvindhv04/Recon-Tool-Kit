@@ -18,6 +18,7 @@ from web_tech import detect_web_technologies
 from vulnerability_scan import check_vulnerabilities
 from beef_injection import inject_beef_hook
 from report_gen import generate_report
+import webbrowser
 
 target = input("Enter target domain: ")
 

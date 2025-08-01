@@ -1,0 +1,98 @@
+{
+    "scan_info": {
+        "target": "irctc.co.in",
+        "scan_date": "2025-08-01T10:48:23.633560"
+    },
+    "subdomains": [
+        "mail.irctc.co.in",
+        "smtp.irctc.co.in",
+        "test.irctc.co.in",
+        "www.irctc.co.in"
+    ],
+    "open_ports": {},
+    "whois_info": {},
+    "banners": {},
+    "dns_info": {
+        "a_records": [
+            "103.252.142.27"
+        ],
+        "aaaa_records": [],
+        "mx_records": [
+            "mail.nget.irctc.co.in.",
+            "mail.irctc.co.in.",
+            "mail1.irctc.co.in."
+        ],
+        "ns_records": [
+            "a8-67.akam.net.",
+            "a13-67.akam.net.",
+            "a11-66.akam.net.",
+            "a12-64.akam.net.",
+            "a1-107.akam.net.",
+            "a26-67.akam.net."
+        ],
+        "txt_records": [
+            "\"b56b6l6scxsbr0lm137s7rhy8ggjdpnd\"",
+            "\"_globalsign-domain-verification=Le50Yt2rZtYy8T37z9FxGqcmU0B3R6mx833glC0AYR\"",
+            "\"0zgc4524vg0d9thj8pyg7qr3vnlfkx91\"",
+            "\"_t5rsdiy0cufmqmbt2h5jdf3eu516d92\"",
+            "\"_globalsign-domain-verification=Oeq6aLmwjM4zrOQhv1C9XJo7mSrtuV6GQAGgYQkwcG\"",
+            "\"MS=AE10793783FFF82C6285B327A9FF2B4641EF35FE\"",
+            "\"_42kvjkm54dn5i5larg74fhdehk8x4u9\"",
+            "\"v=spf1 ip4:103.116.160.0/24 ip4:103.116.163.13/32 ip4:103.252.142.31/32 ip4:103.116.163.33/32 ~all\"",
+            "\"9E3vF4sIMm/3Ldo6szlZ8pWgeLUJEHlLrWkvfKrcYZE=\"",
+            "\"google-site-verification=JociDujdqTdVoleuEU1k9bICFBewNaGISdLInQznjZE\"",
+            "\"_5q72embvkl5bfjsh421ridpbu3487a3\"",
+            "\"4q3s4sr172fl7lkxlc03l0fpghwk9s7m\"",
+            "\"lx6b630qvjmdqx3n8sgk62n84qmd8qlc\"",
+            "\"_globalsign-domain-verification=LnPitG2mJkipUS8WE7VFSrsaM-6mtjr6uSKtCJ-FaJ\""
+        ],
+        "cname_records": [],
+        "ptr_records": []
+    },
+    "web_technologies": {
+        "server": "",
+        "cms": "",
+        "frameworks": [
+            "Bootstrap"
+        ],
+        "languages": [
+            "Java"
+        ],
+        "databases": [],
+        "analytics": [
+            "Google Analytics"
+        ],
+        "security": []
+    },
+    "vulnerabilities": {
+        "open_services": [],
+        "ssl_issues": [
+            {
+                "issue": "SSL/TLS connection failed",
+                "severity": "MEDIUM",
+                "description": "Could not establish SSL connection: _ssl.c:989: The handshake operation timed out"
+            }
+        ],
+        "security_headers": [
+            {
+                "header": "Connection Error",
+                "severity": "MEDIUM",
+                "description": "Could not check security headers: HTTPSConnectionPool(host='irctc.co.in', port=443): Max retries exceeded with url: / (Caused by ConnectTimeoutError(<urllib3.connection.HTTPSConnection object at 0x000001D7ED4DA1D0>, 'Connection to irctc.co.in timed out. (connect timeout=10)'))"
+            }
+        ],
+        "potential_risks": [],
+        "summary": {
+            "total_vulnerabilities": 2,
+            "high_severity": 0,
+            "medium_severity": 2,
+            "low_severity": 0,
+            "status": "WARNING"
+        }
+    },
+    "beef_injection": {
+        "target": "irctc.co.in",
+        "injectable_pages": [],
+        "injection_results": [],
+        "payloads": []
+    }
+}
