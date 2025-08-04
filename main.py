@@ -1,9 +1,3 @@
-#!/usr/bin/env python3
-"""
-Recon-Tool-Kit: Enhanced Network Reconnaissance Tool
-A comprehensive tool for gathering intelligence about target domains.
-"""
-
 import argparse
 import sys
 import time
@@ -16,7 +10,7 @@ from bannergrab import grab_banner
 from dns_lookup import get_dns_info
 from web_tech import detect_web_technologies
 from vulnerability_scan import check_vulnerabilities
-from beef_injection import inject_beef_hook
+from xss_injection import inject_xss_script
 from report_gen import generate_report
 import webbrowser
 
@@ -32,8 +26,8 @@ dns_info = get_dns_info(target)
 web_technologies = detect_web_technologies(target)
 vulnerabilities = check_vulnerabilities(target, open_ports)
 
-print("Checking for BeEF injection opportunities...")
-beef_results = inject_beef_hook(target)
+print("Checking for XSS injection opportunities...")
+xss_results = inject_xss_script(target)
 
 report_data = {
     "target": target,
@@ -44,7 +38,7 @@ report_data = {
     "dns_info": dns_info,
     "web_technologies": web_technologies,
     "vulnerabilities": vulnerabilities,
-    "beef_injection": beef_results
+    "xss_injection": xss_results
 }
 
 generate_report(report_data)

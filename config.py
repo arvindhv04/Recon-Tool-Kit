@@ -1,9 +1,3 @@
-"""
-Configuration file for Recon-Tool-Kit
-Centralized settings for easy customization
-"""
-
-# Scan Configuration
 SCAN_CONFIG = {
     "default_timeout": 3,
     "max_workers": 50,
@@ -11,7 +5,6 @@ SCAN_CONFIG = {
     "delay_between_requests": 0.1
 }
 
-# Port Scanning Configuration
 PORT_CONFIG = {
     "common_ports": {
         21: "FTP", 22: "SSH", 23: "Telnet", 25: "SMTP", 53: "DNS", 80: "HTTP",
@@ -19,12 +12,11 @@ PORT_CONFIG = {
         3306: "MySQL", 5432: "PostgreSQL", 27017: "MongoDB", 6379: "Redis",
         8080: "HTTP-Alt", 8443: "HTTPS-Alt", 3389: "RDP", 5900: "VNC"
     },
-    "high_risk_ports": [21, 23, 3389, 5900],  # FTP, Telnet, RDP, VNC
-    "medium_risk_ports": [22, 25, 110, 143],  # SSH, SMTP, POP3, IMAP
+    "high_risk_ports": [21, 23, 3389, 5900],
+    "medium_risk_ports": [22, 25, 110, 143],
     "ssl_ports": [443, 993, 995, 8443]
 }
 
-# Subdomain Enumeration Configuration
 SUBDOMAIN_CONFIG = {
     "common_subdomains": [
         'www', 'mail', 'ftp', 'admin', 'blog', 'dev', 'test', 'staging',
@@ -40,7 +32,6 @@ SUBDOMAIN_CONFIG = {
     }
 }
 
-# Banner Analysis Configuration
 BANNER_CONFIG = {
     "version_patterns": [
         "apache", "nginx", "iis", "tomcat", "jetty", "dovecot", "postfix",
@@ -58,7 +49,6 @@ BANNER_CONFIG = {
     ]
 }
 
-# Report Configuration
 REPORT_CONFIG = {
     "output_formats": ["json", "html", "txt"],
     "default_output_dir": "reports",
@@ -66,7 +56,6 @@ REPORT_CONFIG = {
     "max_findings_display": 10
 }
 
-# Security Analysis Configuration
 SECURITY_CONFIG = {
     "risk_levels": {
         "LOW": {
@@ -106,27 +95,23 @@ SECURITY_CONFIG = {
     }
 }
 
-# Logging Configuration
 LOGGING_CONFIG = {
     "level": "INFO",
     "format": "%(asctime)s - %(levelname)s - %(message)s",
     "file": "recon_tool.log",
-    "max_file_size": 10 * 1024 * 1024,  # 10MB
+    "max_file_size": 10 * 1024 * 1024,
     "backup_count": 5
 }
 
-# API Configuration (for future enhancements)
 API_CONFIG = {
-    "virustotal_api_key": "",  # Add your API key here
-    "shodan_api_key": "",      # Add your API key here
-    "censys_api_id": "",       # Add your API credentials here
+    "virustotal_api_key": "",
+    "shodan_api_key": "",
+    "censys_api_id": "",
     "censys_api_secret": ""
 }
 
-# User Agent Configuration
 USER_AGENT = "Recon-Tool-Kit/2.0 (Security Research Tool)"
 
-# Rate Limiting Configuration
 RATE_LIMIT_CONFIG = {
     "requests_per_second": 10,
     "delay_between_requests": 0.1,
