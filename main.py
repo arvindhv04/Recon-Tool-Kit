@@ -11,7 +11,6 @@ from dns_lookup import get_dns_info
 from web_tech import detect_web_technologies
 from vulnerability_scan import check_vulnerabilities
 from web_vulnerability_scanner import scan_website_vulnerabilities
-from web_vuln_report import generate_html_report
 from report_gen import generate_report
 
 
@@ -29,11 +28,6 @@ vulnerabilities = check_vulnerabilities(target, open_ports)
 
 print("Starting web vulnerability scan...")
 web_vulns = scan_website_vulnerabilities(f"https://{target}", max_depth=2, max_pages=50)
-
-# Generate HTML report for web vulnerabilities
-if web_vulns and web_vulns.get('vulnerabilities'):
-    html_report_file = generate_html_report(web_vulns, f"web_vuln_report_{target}.html")
-    print(f"Web vulnerability HTML report generated: {html_report_file}")
 
 report_data = {
     "target": target,
