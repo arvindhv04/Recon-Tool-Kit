@@ -21,7 +21,7 @@ def generate_report(report_data):
         "dns_info": report_data["dns_info"],
         "web_technologies": report_data["web_technologies"],
         "vulnerabilities": report_data["vulnerabilities"],
-        "xss_injection": report_data["xss_injection"]
+        "web_vulnerabilities": report_data.get("web_vulnerabilities", {})
     }
 
     with open("report.json", "w") as f:
