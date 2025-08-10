@@ -29,6 +29,29 @@ vulnerabilities = check_vulnerabilities(target, open_ports)
 print("Starting web vulnerability scan...")
 web_vulns = scan_website_vulnerabilities(f"https://{target}", max_depth=2, max_pages=50)
 
+if web_vulns and web_vulns.get('vulnerabilities'):
+    print(f"\nWeb Vulnerability Scan Results:")
+    print(f"Total vulnerabilities found: {len(web_vulns['vulnerabilities'])}")
+    
+    vuln_types = {}
+    for vuln in web_vulns['vulnerabilities']:
+        vuln_type = vuln['type']
+        if vuln_type not in vuln_types:
+            vuln_types[vuln_type] = []
+        vuln_types[vuln_type].append(vuln)
+    
+    for vuln_type, vulns in vuln_types.items():
+        print(f"\n{vuln_type}: {len(vulns)} found")
+        for vuln in vulns[:3]:
+            if 'location' in vuln:
+                print(f"  - {vuln['location']}")
+            elif 'parameter' in vuln:
+                print(f"  - Parameter: {vuln['parameter']}")
+            else:
+                print(f"  - {vuln['url']}")
+        if len(vulns) > 3:
+            print(f"  ... and {len(vulns) - 3} more")
+
 report_data = {
     "target": target,
     "subdomains": subdomains,
