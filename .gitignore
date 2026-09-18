@@ -1,0 +1,10 @@
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+recon_cache.pkl
+recon_tool.log
+web_scanner.log
+recon_report.*
+enhanced_scanner_report.json

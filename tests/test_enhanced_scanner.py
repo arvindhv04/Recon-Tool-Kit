@@ -4,7 +4,7 @@ Test script for the enhanced web vulnerability scanner
 Demonstrates the new detailed form field information and vulnerability location reporting
 """
 
-from web_vulnerability_scanner import WebVulnerabilityScanner
+from recon_toolkit.scanners.web_vulnerabilities import WebVulnerabilityScanner
 import json
 
 def test_enhanced_scanner():

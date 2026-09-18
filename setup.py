@@ -44,7 +44,7 @@ setup(
     install_requires=read_requirements(),
     entry_points={
         "console_scripts": [
-            "recon-tool-kit=main:main",
+            "recon-tool-kit=recon_toolkit.cli:main",
         ],
     },
     include_package_data=True,
